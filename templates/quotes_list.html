@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quotes</title>
+</head>
+<body>
+    <h1>Quotes</h1>
+    <p>
+        <a href="{% url 'quote-create' %}">Add Quote</a> | <a href="{% url 'quote-random' %}">Random</a>
+    </p>
+    <ul>
+        {% for quote in quotes %}
+            <li>
+                <a href="{% url 'quote-detail' quote.id %}">{{ quote }}</a>
+                | <a href="{% url 'quote-update' quote.id %}">Edit</a>
+                | <a href="{% url 'quote-delete' quote.id %}">Delete</a>
+            </li>
+        {% empty %}
+            <li>No quotes available.</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>

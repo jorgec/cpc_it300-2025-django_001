@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Quotes</title>
+</head>
+<body>
+    <h1>Add Quote</h1>
+    <form method="POST" action="{% url 'quote-update' quote.id %}">
+        {% csrf_token %}
+        <p>
+            <label for="q">Quote:</label>
+            <textarea id="q" name="q" rows="10">{{ quote.quote }}</textarea>
+        </p>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+    </form>
+</body>
+</html>

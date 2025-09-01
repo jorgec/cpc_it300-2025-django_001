@@ -18,6 +18,15 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
+from quotes import views as quote_views
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+
+    path("", quote_views.QuotesListView.as_view(), name="quotes"),
+    path("quotes/<int:pk>/", quote_views.QuoteDetailView.as_view(), name="quote-detail"),
+    path("quotes/create/", quote_views.QuoteCreateView.as_view(), name="quote-create"),
+    path("quotes/update/<int:pk>/", quote_views.QuoteUpdateView.as_view(), name="quote-update"),
+    path("quotes/delete/<int:pk>/", quote_views.QuoteDeleteView.as_view(), name="quote-delete"),
+    path("quotes/random", quote_views.QuoteRandomView.as_view(), name="quote-random"),
 ]
