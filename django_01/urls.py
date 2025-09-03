@@ -19,6 +19,7 @@ from django.contrib import admin
 from django.urls import path
 
 from quotes import views as quote_views
+from quotes import api as quotes_api
 
 urlpatterns = [
     path("admin/", admin.site.urls),
@@ -29,4 +30,6 @@ urlpatterns = [
     path("quotes/update/<int:pk>/", quote_views.QuoteUpdateView.as_view(), name="quote-update"),
     path("quotes/delete/<int:pk>/", quote_views.QuoteDeleteView.as_view(), name="quote-delete"),
     path("quotes/random", quote_views.QuoteRandomView.as_view(), name="quote-random"),
+
+    path("quotes/api/", quotes_api.app.urls)
 ]
